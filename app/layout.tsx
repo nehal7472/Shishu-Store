@@ -4,7 +4,11 @@ import "./globals.css";
 import { StoreProvider } from "@/components/providers/StoreProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Shishu Poribohon - Premium Kids Clothing",
@@ -17,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans">
         <StoreProvider>
           {children}
           <CartDrawer />
