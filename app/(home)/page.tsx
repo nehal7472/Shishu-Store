@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer/Footer";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Product } from "@/types"; // ✅ adjust if your Product interface lives elsewhere
+import Image from "next/image";
 
 // -------------------- MOCK DATA --------------------
 const MOCK_PRODUCTS: Product[] = Array.from({ length: 36 }).map((_, i) => ({
@@ -80,13 +81,15 @@ const HeroBanner = () => {
     <section className="relative w-full h-screen overflow-hidden">
       {slides.map((slide, idx) => (
         <Link href={slide.href} key={idx}>
-          <img
+          <Image
             src={slide.src}
             alt={`Slide ${idx + 1}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
               idx === current ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
             draggable={false}
+            width={100}
+            height={100}
           />
         </Link>
       ))}
@@ -167,10 +170,12 @@ const ExploreByCategories = () => (
       {EXPLORE_CATEGORIES.map((cat) => (
         <div key={cat.name} className="text-center group cursor-pointer">
           <div className="aspect-square rounded-lg overflow-hidden">
-            <img
+            <Image
               src={cat.image}
               alt={cat.name}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+              width={100}
+              height={100}
             />
           </div>
           <p className="font-semibold text-sm group-hover:text-[#EC8923]">

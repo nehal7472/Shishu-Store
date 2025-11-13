@@ -2,14 +2,32 @@ import Link from "next/link";
 import { Product } from "@/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/lib/hooks";
+import { addItem } from "@/lib/cartSlice";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  // Generate the URL structure: /shop/category/product-slug
+  const dispatch = useAppDispatch();
   const productUrl = `/shop/${product.category}/${product.slug}`;
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation when clicking Add to Cart
+    e.stopPropagation();
+
+    dispatch(
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        slug: product.slug,
+        category: product.category,
+      })
+    );
+  };
 
   return (
     <Card className="overflow-hidden group border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
@@ -43,6 +61,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <Button
             size="sm"
             className="bg-[#EC8923] hover:bg-[#d97a1f] text-white"
+            onClick={handleAddToCart}
           >
             Add to Cart
           </Button>

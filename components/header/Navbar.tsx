@@ -1,13 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Search, ShoppingCart, User, ChevronDown, Menu, X } from "lucide-react";
+import { Container } from "@/components/layout/Container";
+import { Button } from "@/components/ui/button";
+import { Menu, X, ShoppingCart, Search, User, ChevronDown } from "lucide-react";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { toggleCart } from "@/lib/cartSlice";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const { totalQuantity } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   // === Two Separate Rows ===
   const topLinks = [
@@ -39,7 +46,7 @@ export default function Navbar() {
       sublinks: [
         { label: "TOYS", href: "/product/toys" },
         { label: "ACCESSORIES", href: "/product/accessories" },
-        { label: "HANDMADE DOLLS", href: "/tproduct/handmade-dolls" },
+        { label: "HANDMADE DOLLS", href: "/product/handmade-dolls" },
         { label: "BOOKS", href: "/product/books" },
         { label: "GAMES", href: "/product/games" },
       ],
@@ -213,11 +220,17 @@ export default function Navbar() {
           </Link>
 
           {/* Cart */}
-          <button className="relative text-gray-500 hover:text-[#EC8923]">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center h-4.5 w-4.5 rounded-full bg-red-500 text-white text-[10px] font-semibold">
-              1
-            </span>
+          <button
+            className="relative text-gray-600 hover:text-[#EC8923] transition-colors duration-200"
+            onClick={() => dispatch(toggleCart())}
+          >
+            <ShoppingCart className="h-6 w-6" />
+
+            {totalQuantity > 0 && (
+              <span className="absolute -top-2 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-500 text-white text-xs font-bold shadow-md">
+                {totalQuantity}
+              </span>
+            )}
           </button>
 
           {/* Mobile Toggle */}
