@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/header/Navbar";
@@ -144,41 +144,136 @@ const CategoryNav = ({ items }: { items: string[] }) => (
 );
 
 // -------------------- PRODUCT SLIDER --------------------
-const ProductSlider = ({ products }: { products: Product[] }) => (
-  <div className="max-w-[1400px] mx-auto px-4 lg:px-8 py-10">
-    <h2 className="text-xl font-bold mb-4">Recommended for You</h2>
-    <div className="overflow-x-auto">
-      <div className="flex gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="min-w-[220px] bg-white overflow-hidden"
+const ProductSlider = ({ products }: { products: Product[] }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Number of visible cards based on screen width
+  const getVisibleCount = () => {
+    if (typeof window === "undefined") return 4;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 768) return 2;
+    if (window.innerWidth < 1024) return 3;
+    return 4; // Desktop
+  };
+
+  const [visibleCount, setVisibleCount] = useState(getVisibleCount());
+
+  useEffect(() => {
+    const handleResize = () => setVisibleCount(getVisibleCount());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, products.length - visibleCount);
+
+  const slideTo = (index: number) => {
+    if (!containerRef.current) return;
+
+    const cardWidth = containerRef.current.children[0]?.clientWidth || 300;
+
+    containerRef.current.style.transform = `translateX(-${
+      index * (cardWidth + 24)
+    }px)`; // 24 = gap-6
+
+    setCurrentIndex(index);
+  };
+
+  const prev = () => currentIndex > 0 && slideTo(currentIndex - 1);
+  const next = () => currentIndex < maxIndex && slideTo(currentIndex + 1);
+
+  return (
+    <section className="w-full bg-white py-12">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
+        {/* Header */}
+        <h2 className="text-2xl font-bold mb-6">Recommended for You</h2>
+
+        <div className="relative">
+          {/* Left Arrow */}
+          <button
+            onClick={prev}
+            disabled={currentIndex === 0}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 
+            bg-white shadow-md p-3 rounded-full transition 
+            ${
+              currentIndex === 0
+                ? "opacity-40 cursor-not-allowed"
+                : "hover:bg-gray-100"
+            }`}
           >
-            <ProductCard product={product} />
+            <ChevronLeft size={22} />
+          </button>
+
+          {/* Slider Track Wrapper (hidden overflow) */}
+          <div className="overflow-hidden px-10">
+            <div
+              ref={containerRef}
+              className="flex gap-6 transition-transform duration-300 ease-out"
+              style={{ willChange: "transform" }}
+            >
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className="min-w-[260px] max-w-[260px] bg-white rounded-xl shadow-md hover:shadow-lg transition p-2"
+                >
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+
+          {/* Right Arrow */}
+          <button
+            onClick={next}
+            disabled={currentIndex === maxIndex}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 
+            bg-white shadow-md p-3 rounded-full transition 
+            ${
+              currentIndex === maxIndex
+                ? "opacity-40 cursor-not-allowed"
+                : "hover:bg-gray-100"
+            }`}
+          >
+            <ChevronRight size={22} />
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
-);
+    </section>
+  );
+};
 
 // -------------------- EXPLORE BY CATEGORIES --------------------
 const ExploreByCategories = () => (
-  <section className="max-w-[1400px] mx-auto px-4 lg:px-8 py-12">
-    <h2 className="text-2xl font-bold mb-6">Explore by Categories</h2>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+  <section className="max-w-[1400px] mx-auto px-4 lg:px-8 py-16">
+    {/* Title */}
+    <h2 className="text-center text-3xl font-bold tracking-wide mb-12">
+      EXPLORE BY CATEGORIES
+    </h2>
+
+    {/* Grid */}
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-14 gap-x-6 justify-items-center">
       {EXPLORE_CATEGORIES.map((cat) => (
-        <div key={cat.name} className="text-center group cursor-pointer">
-          <div className="aspect-square rounded-lg overflow-hidden">
+        <div key={cat.name} className="text-center cursor-pointer group">
+          {/* Circle Background */}
+          <div className="relative w-40 h-40 rounded-full bg-[#F9D84A] mx-auto flex items-center justify-center overflow-visible">
             <Image
               src={cat.image}
               alt={cat.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-              width={100}
-              height={100}
+              width={180}
+              height={180}
+              className="object-contain drop-shadow-md transition-transform group-hover:scale-105"
             />
           </div>
-          <p className="font-semibold text-sm group-hover:text-[#EC8923]">
+
+          {/* Label */}
+          <p
+            className="mt-3 text-lg font-medium tracking-wide 
+            group-hover:text-[#EC8923]
+            font-[500] uppercase"
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             {cat.name}
           </p>
         </div>
@@ -195,19 +290,19 @@ export default function HomePage() {
   const sliderItems = MOCK_PRODUCTS.slice(28, 36);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col w-full overflow-x-hidden">
       <Navbar />
 
-      {/* ✅ New Hero Banner */}
       <HeroBanner />
 
-      <section className="max-w-[1400px] mx-auto px-4 lg:px-8 py-8">
+      {/* No padding, full width */}
+      <section className="w-full py-8">
         <ProductGrid products={first8} />
       </section>
 
       <CategoryNav items={["Lehenga", "Salwar Kameez", "Frock"]} />
 
-      <section className="max-w-[1400px] mx-auto px-4 lg:px-8 py-8">
+      <section className="w-full py-8">
         <ProductGrid products={next8} />
       </section>
 
@@ -215,7 +310,7 @@ export default function HomePage() {
         items={["Panjabi Set", "Panjabi", "Dhuti", "T-shirt", "Shirt", "Pants"]}
       />
 
-      <section className="max-w-[1400px] mx-auto px-4 lg:px-8 py-8">
+      <section className="w-full py-8">
         <ProductGrid products={next12} />
       </section>
 

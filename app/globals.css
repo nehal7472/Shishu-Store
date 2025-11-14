@@ -113,10 +113,44 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* FIX: Remove universal border override */
+  * {
+    @apply outline-ring/50;
+    border-color: inherit;
+  }
+}
+
+/* -------------------------------------------------- */
+/* 🔥 BORDER DRAW ANIMATION (for Product Card)       */
+/* -------------------------------------------------- */
+.border-draw {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.group:hover .border-draw {
+  border-color: black;
+  animation: borderDraw 0.9s linear forwards;
+}
+
+@keyframes borderDraw {
+  0% {
+    clip-path: inset(0 100% 100% 0);
+  }
+  25% {
+    clip-path: inset(0 0 100% 0);
+  }
+  50% {
+    clip-path: inset(0 0 0 100%);
+  }
+  75% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
   }
 }
