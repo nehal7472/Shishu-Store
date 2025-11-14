@@ -127,15 +127,29 @@ const HeroBanner = () => {
 
 // -------------------- CATEGORY NAV ROW --------------------
 const CategoryNav = ({ items }: { items: string[] }) => (
-  <div className="max-w-[1400px] mx-auto px-4 lg:px-8 py-6">
-    <div className="flex flex-wrap gap-x-4 gap-y-2 items-center font-semibold text-sm">
+  <div className=" px-4 lg:px-12 py-8">
+    <div className="flex justify-between items-center text-lg font-medium">
       {items.map((item, idx) => (
         <React.Fragment key={item}>
-          <span className="text-[#EC8923] hover:underline cursor-pointer">
+          {/* Category Item */}
+          <span
+            className="
+              text-[#EC8923]
+              px-3 py-1
+              cursor-pointer
+              transition
+              hover:bg-gray-700
+              hover:text-white
+            "
+          >
             {item}
           </span>
+
+          {/* Divider */}
           {idx < items.length - 1 && (
-            <span className="text-gray-300 select-none">|</span>
+            <span className="text-black text-xl select-none leading-none">
+              |
+            </span>
           )}
         </React.Fragment>
       ))}

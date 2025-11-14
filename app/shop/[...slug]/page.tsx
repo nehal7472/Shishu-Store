@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import { useAppDispatch } from "@/lib/hooks";
 import { addItem } from "@/lib/cartSlice";
+import Image from "next/image";
 
 // Mock product data
 const PRODUCTS_DATA: { [key: string]: any } = {
@@ -367,7 +368,7 @@ export default function SingleProductPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <Container className="py-8">
+      <section className="py-8 px-6 md:px-40">
         {/* Breadcrumb */}
         <div className="mb-8">
           <nav className="flex items-center space-x-2 text-sm text-gray-600">
@@ -394,15 +395,17 @@ export default function SingleProductPage() {
         </div>
 
         {/* Product Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
           {/* Product Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
-              <img
+            <div className="aspect-square overflow-hidden  bg-gray-100">
+              <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
                 className="w-full h-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
 
@@ -432,31 +435,9 @@ export default function SingleProductPage() {
           <div className="space-y-6">
             {/* Category & Rating */}
             <div>
-              <p className="text-[#EC8923] font-medium mb-2">
-                {product.category}
-              </p>
-              <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              <h1 className="text-4xl font-extrabold text-gray-900 mb-3">
                 {product.name}
               </h1>
-
-              {/* Rating */}
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < Math.floor(product.rating)
-                          ? "text-yellow-400 fill-current"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-600">
-                  {product.rating} ({product.reviews} reviews)
-                </span>
-              </div>
             </div>
 
             {/* Price */}
@@ -475,11 +456,24 @@ export default function SingleProductPage() {
                 </span>
               )}
             </div>
-
-            {/* Description */}
-            <p className="text-gray-600 leading-relaxed">
-              {product.description}
-            </p>
+            {/* Rating */}
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`h-4 w-4 ${
+                      i < Math.floor(product.rating)
+                        ? "text-yellow-400 fill-current"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-gray-600">
+                {product.rating} ({product.reviews} reviews)
+              </span>
+            </div>
 
             {/* Features */}
             <div>
@@ -499,150 +493,69 @@ export default function SingleProductPage() {
             {/* Size Selection */}
             {product.sizes.length > 0 && (
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Size:</h3>
-                <div className="flex flex-wrap gap-2">
+                <span className="font-semibold text-gray-900 mb-3">Size:</span>
+                <select
+                  value={selectedSize}
+                  onChange={(e) => setSelectedSize(e.target.value)}
+                  className="ml-2 px-4 py-2 border rounded-md border-gray-300 focus:border-[#EC8923] focus:ring-1 focus:ring-[#EC8923] outline-none"
+                >
+                  <option value="">CHOOSE AN OPTION</option>
                   {product.sizes.map((size: string) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 border rounded-md transition-colors ${
-                        selectedSize === size
-                          ? "border-[#EC8923] bg-[#EC8923] text-white"
-                          : "border-gray-300 hover:border-[#EC8923]"
-                      }`}
-                    >
+                    <option key={size} value={size}>
                       {size}
-                    </button>
+                    </option>
                   ))}
-                </div>
-              </div>
-            )}
-
-            {/* Color Selection */}
-            {product.colors.length > 0 && (
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Color:</h3>
-                <div className="flex flex-wrap gap-3">
-                  {product.colors.map((color: any) => (
-                    <button
-                      key={color.name}
-                      onClick={() => setSelectedColor(color.name)}
-                      className={`flex items-center space-x-2 p-2 border rounded-md transition-colors ${
-                        selectedColor === color.name
-                          ? "border-[#EC8923] bg-[#EC8923] bg-opacity-10"
-                          : "border-gray-300 hover:border-[#EC8923]"
-                      }`}
-                    >
-                      <div
-                        className={`w-6 h-6 rounded-full ${color.value} border border-gray-300`}
-                      ></div>
-                      <span className="text-sm">{color.name}</span>
-                    </button>
-                  ))}
-                </div>
+                </select>
               </div>
             )}
 
             {/* Quantity & Add to Cart */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center border border-gray-300 rounded">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
-                  >
-                    -
-                  </button>
-                  <span className="px-4 py-2 min-w-12 text-center">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
-                  >
-                    +
-                  </button>
-                </div>
-
-                <Button
-                  className="flex-1 bg-[#EC8923] hover:bg-[#d97a1f] text-white py-3 text-lg"
-                  onClick={handleAddToCart}
+            <div className="flex items-center gap-3 mt-6">
+              {/* Quantity Selector */}
+              <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="px-4 py-2.5 hover:bg-gray-100 transition-colors text-gray-700 font-medium text-lg"
                 >
-                  {addedToCart ? "✓ Added to Cart!" : "Add to Cart"}
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="border-gray-300"
+                  −
+                </button>
+                <span className="px-6 py-2.5 text-center min-w-12 font-medium text-gray-900">
+                  {quantity}
+                </span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="px-4 py-2.5 hover:bg-gray-100 transition-colors text-gray-700 font-medium text-lg"
                 >
-                  <Heart className="h-5 w-5" />
-                </Button>
+                  +
+                </button>
               </div>
 
+              {/* Add to Cart Button */}
               <Button
-                className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 text-lg"
-                onClick={handleBuyNow}
+                onClick={handleAddToCart}
+                className=" hover:bg-[#d97a1f] text-white font-medium rounded-md px-6 py-6 text-base flex items-center justify-center shadow-sm transition-all"
               >
-                Buy Now
-              </Button>
-
-              {/* Success Message */}
-              {addedToCart && (
-                <div className="bg-green-50 border border-green-200 rounded-md p-3">
-                  <p className="text-green-800 text-sm">
-                    ✓ {quantity} item{quantity > 1 ? "s" : ""} added to cart!
-                    <Link href="/cart" className="font-semibold underline ml-1">
-                      View Cart
-                    </Link>
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Product Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t">
-              <div className="flex items-center space-x-3">
-                <Truck className="h-6 w-6 text-[#EC8923]" />
-                <div>
-                  <p className="font-medium">Free Shipping</p>
-                  <p className="text-sm text-gray-600">On orders over $50</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <RotateCcw className="h-6 w-6 text-[#EC8923]" />
-                <div>
-                  <p className="font-medium">Easy Returns</p>
-                  <p className="text-sm text-gray-600">30-day return policy</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <Shield className="h-6 w-6 text-[#EC8923]" />
-                <div>
-                  <p className="font-medium">Secure Payment</p>
-                  <p className="text-sm text-gray-600">100% secure payment</p>
-                </div>
-              </div>
-            </div>
-
-            {/* SKU & Share */}
-            <div className="flex items-center justify-between pt-6 border-t">
-              <div className="text-sm text-gray-600">
-                SKU: <span className="font-medium">{product.sku}</span>
-              </div>
-              <Button variant="outline" size="sm" className="border-gray-300">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
+                {addedToCart ? "Added to Cart!" : "ADD TO CART"}
               </Button>
             </div>
+
+            {/* Optional Success Message (below, if needed) */}
+            {addedToCart && (
+              <div className="mt-3 bg-green-50 border border-green-200 rounded-md p-3">
+                <p className="text-green-800 text-sm font-medium">
+                  {quantity} item{quantity > 1 ? "s" : ""} added to cart!{" "}
+                  <Link href="/cart" className="underline font-semibold">
+                    View Cart
+                  </Link>
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Product Tabs */}
-        <div className="border-t pt-8 mb-16">
-          <div className="flex space-x-8 border-b">
+        <div className=" pt-8 mb-16">
+          <div className="flex space-x-8 border-b border-gray-200">
             <button
               onClick={() => setActiveTab("description")}
               className={`pb-4 border-b-2 transition-colors ${
@@ -784,14 +697,14 @@ export default function SingleProductPage() {
 
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
-          <div className="border-t pt-12">
+          <div className="border-t border-gray-200 pt-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">
               Related Products
             </h2>
             <ProductGrid products={relatedProducts} />
           </div>
         )}
-      </Container>
+      </section>
 
       <Footer />
     </div>

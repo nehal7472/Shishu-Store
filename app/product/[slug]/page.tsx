@@ -10,6 +10,7 @@ import { ProductGrid } from "@/components/product/ProductGrid";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Filter, Grid, List } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Move PRODUCT_DATA here or keep it in lib and import
 const PRODUCT_DATA: { [key: string]: any } = {
@@ -335,68 +336,97 @@ export default function ProductCategoryPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <Container className="pt-6">
-        <section className="relative w-full h-[80vh] overflow-hidden rounded-xl">
-          <img
+      <section className="pt-6 px-6 md:px-40">
+        <section className="relative w-full h-[80vh] overflow-hidden">
+          <Image
             src={categoryData.heroImage}
             alt={categoryData.title}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-cover"
+            width={500}
+            height={500}
           />
         </section>
-      </Container>
+      </section>
 
       {/* Filter + Breadcrumb Bar */}
-      <Container>
-        <div className="py-5 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-200">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#EC8923] transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900 font-medium">
-              {categoryData.title}
-            </span>
-          </nav>
-
-          {/* Filter Controls */}
-          <div className="flex flex-wrap items-center gap-3 text-sm">
-            <select className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC8923]">
-              <option>Select Price</option>
+      {/* Filter + Wireframe Bar - Pixel Perfect Match */}
+      <section className="px-6 md:px-40 ">
+        <div className="bg-gray-100 px-4 py-5 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 ">
+          {/* Left: Price & Sort - Wireframe Style */}
+          <div className="flex flex-wrap items-center gap-4 text-sm">
+            <select
+              defaultValue=""
+              className="appearance-none bg-white border border-gray-300 rounded px-4 py-2 pr-8 text-gray-700 font-medium text-sm focus:outline-none focus:border-gray-400"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "12px",
+              }}
+            >
+              <option value="" disabled>
+                SELECT PRICE
+              </option>
               <option>৳0 – ৳500</option>
               <option>৳500 – ৳1000</option>
               <option>৳1000 – ৳2000</option>
             </select>
 
-            <select className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC8923]">
-              <option>Sort by Latest</option>
-              <option>Price Low to High</option>
-              <option>Price High to Low</option>
+            <select
+              defaultValue="latest"
+              className="appearance-none bg-white border border-gray-300 rounded px-4 py-2 pr-8 text-gray-700 font-medium text-sm focus:outline-none focus:border-gray-400"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "12px",
+              }}
+            >
+              <option value="latest">SORT BY LATEST</option>
+              <option value="low">Price Low to High</option>
+              <option value="high">Price High to Low</option>
             </select>
+          </div>
 
-            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
-              <button className="px-2 py-2 hover:bg-gray-100">
-                <Grid className="h-4 w-4 text-gray-500" />
-              </button>
-              <button className="px-2 py-2 hover:bg-gray-100 border-l border-gray-300">
-                <List className="h-4 w-4 text-gray-500" />
-              </button>
-            </div>
-
-            <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 text-gray-600">
-              <span className="text-sm mr-1">Show:</span>
-              <select className="text-sm bg-transparent focus:outline-none">
+          {/* Right: Show & View Mode - Wireframe Style */}
+          <div className="flex items-center gap-3">
+            {/* Show Count */}
+            <div className="flex items-center border border-gray-300 rounded px-3 py-1.5">
+              <span className="text-sm font-medium text-gray-700 mr-1">
+                Show:
+              </span>
+              <select
+                defaultValue="12"
+                className="appearance-none bg-transparent text-sm font-medium text-gray-700 pr-6 focus:outline-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                  backgroundPosition: "right 0.5rem center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "10px",
+                }}
+              >
                 <option>12</option>
                 <option>24</option>
                 <option>36</option>
               </select>
             </div>
+
+            {/* View Mode Icons */}
+            <div className="flex items-center border border-gray-300 rounded overflow-hidden">
+              <button className="p-2 hover:bg-gray-50 transition-colors">
+                <Grid className="h-4 w-4 text-gray-600" />
+              </button>
+              <div className="w-px bg-gray-300 h-full" />
+              <button className="p-2 hover:bg-gray-50 transition-colors">
+                <List className="h-4 w-4 text-gray-600" />
+              </button>
+            </div>
           </div>
         </div>
-      </Container>
+      </section>
 
       {/* Product Grid */}
-      <Container className="py-12">
+      <section className="pt-8 px-6 md:px-40">
         {currentProducts.length > 0 ? (
           <ProductGrid products={currentProducts} />
         ) : (
@@ -441,7 +471,7 @@ export default function ProductCategoryPage() {
             </div>
           </div>
         )}
-      </Container>
+      </section>
 
       <Footer />
     </div>

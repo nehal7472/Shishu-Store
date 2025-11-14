@@ -8,6 +8,7 @@ import { Menu, X, ShoppingCart, Search, User, ChevronDown } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { toggleCart } from "@/lib/cartSlice";
 import Image from "next/image";
+import { CartDrawer } from "../cart/CartDrawer";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -97,7 +98,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b">
+    <header className="sticky top-0 z-50 w-full bg-white">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 lg:px-8 h-[85px]">
         {/* === Logo === */}
         <Link href="/" className="flex items-center space-x-2 ">
@@ -220,18 +221,22 @@ export default function Navbar() {
           </Link>
 
           {/* Cart */}
-          <button
-            className="relative text-gray-600 hover:text-[#EC8923] transition-colors duration-200"
-            onClick={() => dispatch(toggleCart())}
-          >
-            <ShoppingCart className="h-6 w-6" />
+          <div>
+            <button
+              className="relative text-gray-600 hover:text-[#EC8923] transition-colors duration-200"
+              onClick={() => dispatch(toggleCart())}
+            >
+              <ShoppingCart className="h-6 w-6" />
+              {totalQuantity > 0 && (
+                <span className="absolute -top-2 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-500 text-white text-xs font-bold shadow-md">
+                  {totalQuantity}
+                </span>
+              )}
+            </button>
 
-            {totalQuantity > 0 && (
-              <span className="absolute -top-2 -right-2 flex items-center justify-center h-5 w-5 rounded-full bg-red-500 text-white text-xs font-bold shadow-md">
-                {totalQuantity}
-              </span>
-            )}
-          </button>
+            {/* Dropdown appears when isOpen = true */}
+            {useAppSelector((state) => state.cart.isOpen) && <CartDrawer />}
+          </div>
 
           {/* Mobile Toggle */}
           <button
