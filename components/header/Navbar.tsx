@@ -28,8 +28,7 @@ export default function Navbar() {
         { label: "LOUNGEWEAR", href: "/product/loungewear" },
         { label: "JACKETS & COATS", href: "/product/jackets-coats" },
         { label: "HOODIE", href: "/product/hoodie" },
-        { label: "SWEAT SUITS", href: "/product/sweat-suits" },
-        { label: "SHIRT", href: "/product/shirt" },
+
       ],
     },
     {
@@ -48,8 +47,6 @@ export default function Navbar() {
         { label: "TOYS", href: "/product/toys" },
         { label: "ACCESSORIES", href: "/product/accessories" },
         { label: "HANDMADE DOLLS", href: "/product/handmade-dolls" },
-        { label: "BOOKS", href: "/product/books" },
-        { label: "GAMES", href: "/product/games" },
       ],
     },
     {
@@ -58,8 +55,6 @@ export default function Navbar() {
       sublinks: [
         { label: "LEHENGA", href: "/product/lehenga" },
         { label: "SALWAR KAMEEZ", href: "/product/salwar-kameez" },
-        { label: "PANJABI SET", href: "/product/panjabi-set" },
-        { label: "JUBBA SET", href: "/product/jubba-set" },
       ],
     },
     {
@@ -68,8 +63,6 @@ export default function Navbar() {
       sublinks: [
         { label: "LOUNGEWEAR", href: "/product/loungewear" },
         { label: "CO-ORD SET", href: "/product/co-ord-set" },
-        { label: "SHIRT", href: "/product/shirt" },
-        { label: "PANTS", href: "/product/pants" },
       ],
     },
   ];
@@ -81,7 +74,6 @@ export default function Navbar() {
       sublinks: [
         { label: "SHIRT", href: "/product/shirt" },
         { label: "PANTS", href: "/product/pants" },
-        { label: "POLO", href: "/product/polo" },
       ],
     },
     {
@@ -90,8 +82,6 @@ export default function Navbar() {
       sublinks: [
         { label: "FROCK", href: "/product/frock" },
         { label: "LEGGINGS", href: "/product/leggings" },
-        { label: "PANTS", href: "/product/pants" },
-        { label: "SHIRTS", href: "/product/shirts" },
       ],
     },
     { label: "SHOP", href: "/shop" },

@@ -23,8 +23,8 @@ import { addItem } from "@/lib/cartSlice";
 import Image from "next/image";
 
 // Mock product data
-const PRODUCTS_DATA: { [key: string]: any } = {
-  // Winter -> Loungewear -> Snowblossom Loungewear
+export const PRODUCTS_DATA: { [key: string]: any } = {
+  // -------------------- WINTER --------------------
   "loungewear/snowblossom-loungewear": {
     id: "w-lounge-1",
     name: "Snowblossom Loungewear",
@@ -33,65 +33,129 @@ const PRODUCTS_DATA: { [key: string]: any } = {
     images: [
       "https://images.unsplash.com/photo-1551488831-6745a0aa60c6?w=600&h=600&fit=crop",
       "https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=600&fit=crop",
     ],
     category: "loungewear",
     slug: "snowblossom-loungewear",
     inStock: true,
-    description:
-      "Premium quality snowblossom loungewear set for ultimate comfort during winter days. Made from soft, breathable fabric that keeps you warm and cozy.",
-    features: [
-      "100% Premium Cotton",
-      "Soft and Breathable",
-      "Machine Washable",
-      "Available in Multiple Sizes",
-    ],
+    description: "Premium quality loungewear for ultimate comfort during winter.",
+    features: ["100% Premium Cotton", "Soft and Breathable", "Machine Washable"],
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
       { name: "Pink", value: "bg-pink-400" },
       { name: "Blue", value: "bg-blue-400" },
-      { name: "White", value: "bg-gray-200" },
     ],
     rating: 4.5,
     reviews: 128,
     sku: "SHW-LG-001",
   },
-
-  // Toys & Books -> Toys -> Play Craft Crossword Game
-  "toys/play-craft-crossword-premiere-game-ages-5": {
-    id: "tb-toy-1",
-    name: "Play Craft Crossword Premiere Game (Ages 5+)",
-    price: 24.99,
-    originalPrice: 29.99,
-    images: [
-      "https://images.unsplash.com/photo-1594787319143-60a132a8e0f0?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop",
-    ],
-    category: "toys",
-    slug: "play-craft-crossword-premiere-game-ages-5",
+  "jackets-coats/winter-warm-jacket": {
+    id: "w-jacket-1",
+    name: "Winter Warm Jacket",
+    price: 49.99,
+    originalPrice: 59.99,
+    images: ["https://images.unsplash.com/photo-1600180758895-2d12a177eaff?w=600&h=600&fit=crop"],
+    category: "jackets-coats",
+    slug: "winter-warm-jacket",
     inStock: true,
-    description:
-      "Engaging crossword puzzle game designed for children ages 5 and above. Helps develop vocabulary, spelling skills, and cognitive abilities while having fun.",
-    features: [
-      "Educational & Fun",
-      "Develops Vocabulary",
-      "Age 5+ Appropriate",
-      "Multiple Difficulty Levels",
-    ],
-    sizes: ["Standard"],
-    colors: [
-      {
-        name: "Multi-color",
-        value: "bg-gradient-to-r from-yellow-400 to-red-500",
-      },
-    ],
-    rating: 4.8,
-    reviews: 89,
-    sku: "SHW-TY-001",
+    description: "Warm jackets for chilly days.",
+    features: ["Insulated", "Durable Fabric"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [{ name: "Red", value: "bg-red-500" }],
+    rating: 4.6,
+    reviews: 85,
+    sku: "WIN-JC-001",
+  },
+  "hoodie/soft-hoodie": {
+    id: "w-hoodie-1",
+    name: "Soft Hoodie",
+    price: 29.99,
+    originalPrice: 35.99,
+    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
+    category: "hoodie",
+    slug: "soft-hoodie",
+    inStock: true,
+    description: "Cozy hoodies for kids.",
+    features: ["Soft Cotton", "Machine Washable"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [{ name: "Gray", value: "bg-gray-400" }],
+    rating: 4.3,
+    reviews: 60,
+    sku: "WIN-H-001",
   },
 
-  // Ethnic Wear -> Lehenga -> Traditional Silk Lehenga
+  // -------------------- TINY BY SHISHU --------------------
+  "gift-box/luxury-gift-box": {
+    id: "tiny-gift-1",
+    name: "Luxury Gift Box",
+    price: 19.99,
+    originalPrice: 24.99,
+    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
+    category: "gift-box",
+    slug: "luxury-gift-box",
+    inStock: true,
+    description: "Beautiful gift boxes for kids.",
+    features: ["Eco-friendly", "Colorful Design"],
+    sizes: ["Standard"],
+    colors: [{ name: "Multi-color", value: "bg-gradient-to-r from-yellow-400 to-red-500" }],
+    rating: 4.8,
+    reviews: 50,
+    sku: "TINY-G-001",
+  },
+  "nima-set/cozy-nima-set": {
+    id: "tiny-nima-1",
+    name: "Cozy Nima Set",
+    price: 22.99,
+    originalPrice: 27.99,
+    images: ["https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop"],
+    category: "nima-set",
+    slug: "cozy-nima-set",
+    inStock: true,
+    description: "Soft Nima sets for babies.",
+    features: ["Soft Cotton", "Multiple Colors"],
+    sizes: ["S", "M", "L"],
+    colors: [{ name: "Blue", value: "bg-blue-400" }],
+    rating: 4.5,
+    reviews: 42,
+    sku: "TINY-N-001",
+  },
+
+  // -------------------- TOYS & BOOKS --------------------
+  "toys/educational-toy": {
+    id: "toy-1",
+    name: "Educational Toy",
+    price: 14.99,
+    originalPrice: 19.99,
+    images: ["https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop"],
+    category: "toys",
+    slug: "educational-toy",
+    inStock: true,
+    description: "Fun and educational toys.",
+    features: ["Safe Materials", "Interactive"],
+    sizes: ["Standard"],
+    colors: [{ name: "Multi-color", value: "bg-gradient-to-r from-yellow-400 to-red-500" }],
+    rating: 4.6,
+    reviews: 70,
+    sku: "TOY-001",
+  },
+  "handmade-dolls/cute-doll": {
+    id: "toy-doll-1",
+    name: "Cute Handmade Doll",
+    price: 19.99,
+    originalPrice: 24.99,
+    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
+    category: "handmade-dolls",
+    slug: "cute-doll",
+    inStock: true,
+    description: "Soft handmade dolls for kids.",
+    features: ["Soft", "Child Safe"],
+    sizes: ["Standard"],
+    colors: [{ name: "Pink", value: "bg-pink-400" }],
+    rating: 4.8,
+    reviews: 28,
+    sku: "TOY-D-001",
+  },
+
+  // -------------------- ETHNIC WEAR --------------------
   "lehenga/traditional-silk-lehenga": {
     id: "e-lehenga-1",
     name: "Traditional Silk Lehenga",
@@ -99,61 +163,56 @@ const PRODUCTS_DATA: { [key: string]: any } = {
     originalPrice: 99.99,
     images: [
       "https://images.unsplash.com/photo-1590005354167-6da97870f6c4?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop",
     ],
     category: "lehenga",
     slug: "traditional-silk-lehenga",
     inStock: true,
-    description:
-      "Exquisite traditional silk lehenga with intricate embroidery and premium craftsmanship. Perfect for special occasions and celebrations.",
-    features: [
-      "Pure Silk Fabric",
-      "Hand Embroidery",
-      "Premium Quality",
-      "Custom Sizing Available",
-    ],
-    sizes: ["S", "M", "L", "XL", "Custom"],
-    colors: [
-      { name: "Red", value: "bg-red-600" },
-      { name: "Blue", value: "bg-blue-600" },
-      { name: "Green", value: "bg-green-600" },
-    ],
+    description: "Exquisite traditional silk lehenga.",
+    features: ["Pure Silk Fabric", "Hand Embroidery"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [{ name: "Red", value: "bg-red-600" }],
     rating: 4.9,
     reviews: 56,
     sku: "SHW-EL-001",
   },
-
-  // Boys -> Polo -> Cotton Polo Shirt
-  "polo/boys-cotton-polo": {
-    id: "b-polo-1",
-    name: "Boys Cotton Polo Shirt",
-    price: 19.99,
-    images: [
-      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop",
-    ],
-    category: "polo",
-    slug: "boys-cotton-polo",
+  "salwar-kameez/elegant-set": {
+    id: "e-salwar-1",
+    name: "Elegant Salwar Kameez",
+    price: 44.99,
+    originalPrice: 54.99,
+    images: ["https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop"],
+    category: "salwar-kameez",
+    slug: "elegant-set",
     inStock: true,
-    description:
-      "Comfortable and stylish cotton polo shirt for boys. Perfect for casual wear, school, and outdoor activities.",
-    features: [
-      "100% Cotton",
-      "Machine Washable",
-      "Comfortable Fit",
-      "Multiple Colors Available",
-    ],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colors: [
-      { name: "Navy", value: "bg-blue-800" },
-      { name: "White", value: "bg-gray-100" },
-      { name: "Red", value: "bg-red-500" },
-    ],
-    rating: 4.3,
-    reviews: 203,
-    sku: "SHW-BP-001",
+    description: "Elegant salwar kameez sets for girls.",
+    features: ["Soft Fabric", "Beautiful Design"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [{ name: "Blue", value: "bg-blue-600" }],
+    rating: 4.7,
+    reviews: 46,
+    sku: "SHW-SK-001",
+  },
+
+  // -------------------- CASUAL --------------------
+  "co-ord-set/casual-set": {
+    id: "casual-1",
+    name: "Casual Co-ord Set",
+    price: 29.99,
+    originalPrice: 34.99,
+    images: ["https://images.unsplash.com/photo-1551488831-6745a0aa60c6?w=600&h=600&fit=crop"],
+    category: "co-ord-set",
+    slug: "casual-set",
+    inStock: true,
+    description: "Casual matching sets for daily wear.",
+    features: ["Cotton Fabric", "Comfortable Fit"],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [{ name: "Green", value: "bg-green-400" }],
+    rating: 4.6,
+    reviews: 36,
+    sku: "CAS-C-001",
   },
 };
+
 
 // Related products data based on categories
 const RELATED_PRODUCTS: { [key: string]: any[] } = {

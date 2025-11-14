@@ -27,16 +27,16 @@ const MOCK_PRODUCTS: Product[] = Array.from({ length: 36 }).map((_, i) => ({
 }));
 
 const EXPLORE_CATEGORIES = [
-  { name: "Shirt", image: "/placeholder-1.jpg" },
-  { name: "Pant", image: "/placeholder-2.jpg" },
-  { name: "Frock", image: "/placeholder-3.jpg" },
-  { name: "T-shirt", image: "/placeholder-4.jpg" },
-  { name: "Dhuti", image: "/placeholder-5.jpg" },
-  { name: "Panjabi", image: "/placeholder-6.jpg" },
-  { name: "Lehenga", image: "/placeholder-7.jpg" },
-  { name: "Salwar Kameez", image: "/placeholder-8.jpg" },
-  { name: "Toys", image: "/placeholder-9.jpg" },
-  { name: "Books", image: "/placeholder-10.jpg" },
+  { name: "Shirt", image: "/images/boy01.png" },
+  { name: "Pant", image: "/images/boy02.png" },
+  { name: "Frock", image: "/images/girl02.png" },
+  { name: "T-shirt", image: "/images/girl01.png" },
+  { name: "Dhuti", image:"/images/boy01.png" },
+  { name: "Panjabi", image: "/images/boy02.png" },
+  { name: "Lehenga", image:"/images/girl02.png" },
+  { name: "Salwar Kameez", image: "/images/girl02.png" },
+  { name: "Toys", image: "/images/boy01.png" },
+  { name: "Books", image: "/images/boy02.png" },
 ];
 
 // -------------------- HERO BANNER --------------------
@@ -69,7 +69,7 @@ const HeroBanner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 2000);
+    }, 3000); // smoother timing
     return () => clearInterval(interval);
   }, [slides.length]);
 
@@ -84,7 +84,7 @@ const HeroBanner = () => {
           <Image
             src={slide.src}
             alt={`Slide ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+            className={`absolute inset-0 w-full h-screen object-cover transition-opacity duration-700 ${
               idx === current ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
             draggable={false}
@@ -97,25 +97,25 @@ const HeroBanner = () => {
       {/* Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-md text-gray-700"
+        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-2 sm:p-3 rounded-full shadow-md text-gray-700"
       >
-        <ChevronLeft size={22} />
+        <ChevronLeft size={20} className="sm:text-lg" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-md text-gray-700"
+        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-2 sm:p-3 rounded-full shadow-md text-gray-700"
       >
-        <ChevronRight size={22} />
+        <ChevronRight size={20} className="sm:text-lg" />
       </button>
 
       {/* Dots */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-8 flex gap-2 z-20">
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-8 flex gap-2 z-20">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               i === current ? "bg-white scale-125" : "bg-white/60"
             }`}
           />
@@ -126,36 +126,59 @@ const HeroBanner = () => {
 };
 
 // -------------------- CATEGORY NAV ROW --------------------
-const CategoryNav = ({ items }: { items: string[] }) => (
-  <div className=" px-4 lg:px-12 py-8">
-    <div className="flex justify-between items-center text-lg font-medium">
-      {items.map((item, idx) => (
-        <React.Fragment key={item}>
-          {/* Category Item */}
-          <span
-            className="
-              text-[#EC8923]
-              px-3 py-1
-              cursor-pointer
-              transition
-              hover:bg-gray-700
-              hover:text-white
-            "
-          >
-            {item}
-          </span>
+const CategoryNav = ({ items }: { items: string[] }) => {
+  // Map category names to href slugs
+  const slugMap: Record<string, string> = {
+    "Salwar Kameez": "salwar-kameez",
+    Lehenga: "lehenga",
+    Frock: "frock",
+    "Panjabi Set": "panjabi-set",
+    Panjabi: "panjabi",
+    Dhuti: "dhuti",
+    "T-shirt": "t-shirt",
+    Shirt: "shirt",
+    Pants: "pants",
+    Toys: "toys",
+    "Handmade Dolls": "handmade-dolls",
+    "ABC Toys": "abc-toys",
+    Books: "books",
+    Mayurpankhi: "mayurpankhi",
+  };
 
-          {/* Divider */}
-          {idx < items.length - 1 && (
-            <span className="text-black text-xl select-none leading-none">
-              |
-            </span>
-          )}
-        </React.Fragment>
-      ))}
+  return (
+    <div className="px-4 lg:px-12 py-8">
+      <div className="flex justify-between items-center text-lg font-medium">
+        {items.map((item, idx) => (
+          <React.Fragment key={item}>
+            {/* Category Item */}
+            <Link
+              href={`/product/${
+                slugMap[item] || item.toLowerCase().replace(/\s+/g, "-")
+              }`}
+              className="
+                text-[#EC8923]
+                px-3 py-1
+                cursor-pointer
+                transition
+                hover:bg-gray-700
+                hover:text-white
+              "
+            >
+              {item}
+            </Link>
+
+            {/* Divider */}
+            {idx < items.length - 1 && (
+              <span className="text-black text-xl select-none leading-none">
+                |
+              </span>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // -------------------- PRODUCT SLIDER --------------------
 const ProductSlider = ({ products }: { products: Product[] }) => {
