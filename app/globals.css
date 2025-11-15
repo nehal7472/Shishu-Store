@@ -151,3 +151,12 @@ html {
   animation: border-glow 1.5s ease-out forwards;
   border-radius: 8px;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

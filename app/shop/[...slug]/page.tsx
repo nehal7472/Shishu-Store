@@ -23,8 +23,8 @@ import { addItem } from "@/lib/cartSlice";
 import Image from "next/image";
 
 // Mock product data
-export const PRODUCTS_DATA: { [key: string]: any } = {
-  // -------------------- WINTER --------------------
+const PRODUCTS_DATA: { [key: string]: any } = {
+  // Winter -> Loungewear -> Snowblossom Loungewear
   "loungewear/snowblossom-loungewear": {
     id: "w-lounge-1",
     name: "Snowblossom Loungewear",
@@ -33,129 +33,65 @@ export const PRODUCTS_DATA: { [key: string]: any } = {
     images: [
       "https://images.unsplash.com/photo-1551488831-6745a0aa60c6?w=600&h=600&fit=crop",
       "https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=600&fit=crop",
     ],
     category: "loungewear",
     slug: "snowblossom-loungewear",
     inStock: true,
-    description: "Premium quality loungewear for ultimate comfort during winter.",
-    features: ["100% Premium Cotton", "Soft and Breathable", "Machine Washable"],
+    description:
+      "Premium quality snowblossom loungewear set for ultimate comfort during winter days. Made from soft, breathable fabric that keeps you warm and cozy.",
+    features: [
+      "100% Premium Cotton",
+      "Soft and Breathable",
+      "Machine Washable",
+      "Available in Multiple Sizes",
+    ],
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
       { name: "Pink", value: "bg-pink-400" },
       { name: "Blue", value: "bg-blue-400" },
+      { name: "White", value: "bg-gray-200" },
     ],
     rating: 4.5,
     reviews: 128,
     sku: "SHW-LG-001",
   },
-  "jackets-coats/winter-warm-jacket": {
-    id: "w-jacket-1",
-    name: "Winter Warm Jacket",
-    price: 49.99,
-    originalPrice: 59.99,
-    images: ["https://images.unsplash.com/photo-1600180758895-2d12a177eaff?w=600&h=600&fit=crop"],
-    category: "jackets-coats",
-    slug: "winter-warm-jacket",
-    inStock: true,
-    description: "Warm jackets for chilly days.",
-    features: ["Insulated", "Durable Fabric"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Red", value: "bg-red-500" }],
-    rating: 4.6,
-    reviews: 85,
-    sku: "WIN-JC-001",
-  },
-  "hoodie/soft-hoodie": {
-    id: "w-hoodie-1",
-    name: "Soft Hoodie",
-    price: 29.99,
-    originalPrice: 35.99,
-    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
-    category: "hoodie",
-    slug: "soft-hoodie",
-    inStock: true,
-    description: "Cozy hoodies for kids.",
-    features: ["Soft Cotton", "Machine Washable"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Gray", value: "bg-gray-400" }],
-    rating: 4.3,
-    reviews: 60,
-    sku: "WIN-H-001",
-  },
 
-  // -------------------- TINY BY SHISHU --------------------
-  "gift-box/luxury-gift-box": {
-    id: "tiny-gift-1",
-    name: "Luxury Gift Box",
-    price: 19.99,
-    originalPrice: 24.99,
-    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
-    category: "gift-box",
-    slug: "luxury-gift-box",
-    inStock: true,
-    description: "Beautiful gift boxes for kids.",
-    features: ["Eco-friendly", "Colorful Design"],
-    sizes: ["Standard"],
-    colors: [{ name: "Multi-color", value: "bg-gradient-to-r from-yellow-400 to-red-500" }],
-    rating: 4.8,
-    reviews: 50,
-    sku: "TINY-G-001",
-  },
-  "nima-set/cozy-nima-set": {
-    id: "tiny-nima-1",
-    name: "Cozy Nima Set",
-    price: 22.99,
-    originalPrice: 27.99,
-    images: ["https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop"],
-    category: "nima-set",
-    slug: "cozy-nima-set",
-    inStock: true,
-    description: "Soft Nima sets for babies.",
-    features: ["Soft Cotton", "Multiple Colors"],
-    sizes: ["S", "M", "L"],
-    colors: [{ name: "Blue", value: "bg-blue-400" }],
-    rating: 4.5,
-    reviews: 42,
-    sku: "TINY-N-001",
-  },
-
-  // -------------------- TOYS & BOOKS --------------------
-  "toys/educational-toy": {
-    id: "toy-1",
-    name: "Educational Toy",
-    price: 14.99,
-    originalPrice: 19.99,
-    images: ["https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop"],
+  // Toys & Books -> Toys -> Play Craft Crossword Game
+  "toys/play-craft-crossword-premiere-game-ages-5": {
+    id: "tb-toy-1",
+    name: "Play Craft Crossword Premiere Game (Ages 5+)",
+    price: 24.99,
+    originalPrice: 29.99,
+    images: [
+      "https://images.unsplash.com/photo-1594787319143-60a132a8e0f0?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop",
+    ],
     category: "toys",
-    slug: "educational-toy",
+    slug: "play-craft-crossword-premiere-game-ages-5",
     inStock: true,
-    description: "Fun and educational toys.",
-    features: ["Safe Materials", "Interactive"],
+    description:
+      "Engaging crossword puzzle game designed for children ages 5 and above. Helps develop vocabulary, spelling skills, and cognitive abilities while having fun.",
+    features: [
+      "Educational & Fun",
+      "Develops Vocabulary",
+      "Age 5+ Appropriate",
+      "Multiple Difficulty Levels",
+    ],
     sizes: ["Standard"],
-    colors: [{ name: "Multi-color", value: "bg-gradient-to-r from-yellow-400 to-red-500" }],
-    rating: 4.6,
-    reviews: 70,
-    sku: "TOY-001",
-  },
-  "handmade-dolls/cute-doll": {
-    id: "toy-doll-1",
-    name: "Cute Handmade Doll",
-    price: 19.99,
-    originalPrice: 24.99,
-    images: ["https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&h=600&fit=crop"],
-    category: "handmade-dolls",
-    slug: "cute-doll",
-    inStock: true,
-    description: "Soft handmade dolls for kids.",
-    features: ["Soft", "Child Safe"],
-    sizes: ["Standard"],
-    colors: [{ name: "Pink", value: "bg-pink-400" }],
+    colors: [
+      {
+        name: "Multi-color",
+        value: "bg-gradient-to-r from-yellow-400 to-red-500",
+      },
+    ],
     rating: 4.8,
-    reviews: 28,
-    sku: "TOY-D-001",
+    reviews: 89,
+    sku: "SHW-TY-001",
   },
 
-  // -------------------- ETHNIC WEAR --------------------
+  // Ethnic Wear -> Lehenga -> Traditional Silk Lehenga
   "lehenga/traditional-silk-lehenga": {
     id: "e-lehenga-1",
     name: "Traditional Silk Lehenga",
@@ -163,56 +99,61 @@ export const PRODUCTS_DATA: { [key: string]: any } = {
     originalPrice: 99.99,
     images: [
       "https://images.unsplash.com/photo-1590005354167-6da97870f6c4?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop",
     ],
     category: "lehenga",
     slug: "traditional-silk-lehenga",
     inStock: true,
-    description: "Exquisite traditional silk lehenga.",
-    features: ["Pure Silk Fabric", "Hand Embroidery"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Red", value: "bg-red-600" }],
+    description:
+      "Exquisite traditional silk lehenga with intricate embroidery and premium craftsmanship. Perfect for special occasions and celebrations.",
+    features: [
+      "Pure Silk Fabric",
+      "Hand Embroidery",
+      "Premium Quality",
+      "Custom Sizing Available",
+    ],
+    sizes: ["S", "M", "L", "XL", "Custom"],
+    colors: [
+      { name: "Red", value: "bg-red-600" },
+      { name: "Blue", value: "bg-blue-600" },
+      { name: "Green", value: "bg-green-600" },
+    ],
     rating: 4.9,
     reviews: 56,
     sku: "SHW-EL-001",
   },
-  "salwar-kameez/elegant-set": {
-    id: "e-salwar-1",
-    name: "Elegant Salwar Kameez",
-    price: 44.99,
-    originalPrice: 54.99,
-    images: ["https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop"],
-    category: "salwar-kameez",
-    slug: "elegant-set",
-    inStock: true,
-    description: "Elegant salwar kameez sets for girls.",
-    features: ["Soft Fabric", "Beautiful Design"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Blue", value: "bg-blue-600" }],
-    rating: 4.7,
-    reviews: 46,
-    sku: "SHW-SK-001",
-  },
 
-  // -------------------- CASUAL --------------------
-  "co-ord-set/casual-set": {
-    id: "casual-1",
-    name: "Casual Co-ord Set",
-    price: 29.99,
-    originalPrice: 34.99,
-    images: ["https://images.unsplash.com/photo-1551488831-6745a0aa60c6?w=600&h=600&fit=crop"],
-    category: "co-ord-set",
-    slug: "casual-set",
+  // Boys -> Polo -> Cotton Polo Shirt
+  "polo/boys-cotton-polo": {
+    id: "b-polo-1",
+    name: "Boys Cotton Polo Shirt",
+    price: 19.99,
+    images: [
+      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=600&h=600&fit=crop",
+    ],
+    category: "polo",
+    slug: "boys-cotton-polo",
     inStock: true,
-    description: "Casual matching sets for daily wear.",
-    features: ["Cotton Fabric", "Comfortable Fit"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: [{ name: "Green", value: "bg-green-400" }],
-    rating: 4.6,
-    reviews: 36,
-    sku: "CAS-C-001",
+    description:
+      "Comfortable and stylish cotton polo shirt for boys. Perfect for casual wear, school, and outdoor activities.",
+    features: [
+      "100% Cotton",
+      "Machine Washable",
+      "Comfortable Fit",
+      "Multiple Colors Available",
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [
+      { name: "Navy", value: "bg-blue-800" },
+      { name: "White", value: "bg-gray-100" },
+      { name: "Red", value: "bg-red-500" },
+    ],
+    rating: 4.3,
+    reviews: 203,
+    sku: "SHW-BP-001",
   },
 };
-
 
 // Related products data based on categories
 const RELATED_PRODUCTS: { [key: string]: any[] } = {
@@ -428,37 +369,12 @@ export default function SingleProductPage() {
       <Navbar />
 
       <section className="py-8 px-6 md:px-40">
-        {/* Breadcrumb */}
-        <div className="mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#EC8923] transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link
-              href="/shop"
-              className="hover:text-[#EC8923] transition-colors"
-            >
-              Shop
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link
-              href={`/product/${slug[0]}`}
-              className="hover:text-[#EC8923] transition-colors capitalize"
-            >
-              {slug[0]}
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900">{product.name}</span>
-          </nav>
-        </div>
-
         {/* Product Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 mb-16">
           {/* Product Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="aspect-square overflow-hidden  bg-gray-100">
+            <div className="aspect-square overflow-hidden bg-gray-100">
               <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
@@ -469,21 +385,24 @@ export default function SingleProductPage() {
             </div>
 
             {/* Thumbnail Images */}
-            <div className="flex space-x-2 overflow-x-auto">
+            <div className="flex space-x-3 overflow-x-auto no-scrollbar">
               {product.images.map((image: string, index: number) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`flex-shrink-0 w-20 h-20 rounded border-2 transition-all ${
-                    selectedImage === index
-                      ? "border-[#EC8923] scale-105"
-                      : "border-gray-200 hover:border-gray-300"
-                  }`}
+                  className={`flex-shrink-0 w-20 h-20 rounded overflow-hidden border transition-all
+          ${
+            selectedImage === index
+              ? "border-[#EC8923] scale-105"
+              : "border-gray-300 hover:border-[#EC8923]"
+          }`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} ${index + 1}`}
-                    className="w-full h-full object-cover rounded"
+                    className="w-full h-full object-cover"
+                    width={100}
+                    height={100}
                   />
                 </button>
               ))}
@@ -494,44 +413,30 @@ export default function SingleProductPage() {
           <div className="space-y-6">
             {/* Category & Rating */}
             <div>
-              <h1 className="text-4xl font-extrabold text-gray-900 mb-3">
+              <h2 className="text-5xl font-bold text-gray-900 mb-3">
                 {product.name}
-              </h1>
-            </div>
-
-            {/* Price */}
-            <div className="flex items-center space-x-3">
-              <span className="text-3xl font-bold text-gray-900">
-                ${product.price}
-              </span>
-              {product.originalPrice && (
-                <span className="text-xl text-gray-500 line-through">
-                  ${product.originalPrice}
+              </h2>
+              <h2 className="text-3xl font-bold text-gray-600">
+                {product.originalPrice} - {product.price}
+              </h2>
+              {/* Rating */}
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="flex items-center">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-4 w-4 ${
+                        i < Math.floor(product.rating)
+                          ? "text-yellow-400 fill-current"
+                          : "text-gray-300"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-sm text-gray-600">
+                  {product.rating} ({product.reviews} reviews)
                 </span>
-              )}
-              {product.originalPrice && (
-                <span className="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-medium">
-                  Save ${(product.originalPrice - product.price).toFixed(2)}
-                </span>
-              )}
-            </div>
-            {/* Rating */}
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`h-4 w-4 ${
-                      i < Math.floor(product.rating)
-                        ? "text-yellow-400 fill-current"
-                        : "text-gray-300"
-                    }`}
-                  />
-                ))}
               </div>
-              <span className="text-sm text-gray-600">
-                {product.rating} ({product.reviews} reviews)
-              </span>
             </div>
 
             {/* Features */}
@@ -550,15 +455,19 @@ export default function SingleProductPage() {
             </div>
 
             {/* Size Selection */}
-            {product.sizes.length > 0 && (
-              <div>
-                <span className="font-semibold text-gray-900 mb-3">Size:</span>
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="flex items-center gap-4">
+                <h3 className="font-semibold text-gray-900 mb-3">Size:</h3>
+
                 <select
                   value={selectedSize}
                   onChange={(e) => setSelectedSize(e.target.value)}
-                  className="ml-2 px-4 py-2 border rounded-md border-gray-300 focus:border-[#EC8923] focus:ring-1 focus:ring-[#EC8923] outline-none"
+                  className="w-full md:w-60 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#EC8923] focus:border-[#EC8923] outline-none transition"
                 >
-                  <option value="">CHOOSE AN OPTION</option>
+                  <option value="" disabled>
+                    Select a size
+                  </option>
+
                   {product.sizes.map((size: string) => (
                     <option key={size} value={size}>
                       {size}
@@ -569,58 +478,57 @@ export default function SingleProductPage() {
             )}
 
             {/* Quantity & Add to Cart */}
-            <div className="flex items-center gap-3 mt-6">
-              {/* Quantity Selector */}
-              <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2.5 hover:bg-gray-100 transition-colors text-gray-700 font-medium text-lg"
-                >
-                  −
-                </button>
-                <span className="px-6 py-2.5 text-center min-w-12 font-medium text-gray-900">
-                  {quantity}
-                </span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-2.5 hover:bg-gray-100 transition-colors text-gray-700 font-medium text-lg"
-                >
-                  +
-                </button>
-              </div>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4 border-y py-4 border-gray-200">
+                <div className="flex items-center border border-gray-300 rounded">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                  >
+                    -
+                  </button>
+                  <span className="px-4 py-2 min-w-12 text-center">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
 
-              {/* Add to Cart Button */}
-              <Button
-                onClick={handleAddToCart}
-                className=" hover:bg-[#d97a1f] text-white font-medium rounded-md px-6 py-6 text-base flex items-center justify-center shadow-sm transition-all"
-              >
-                {addedToCart ? "Added to Cart!" : "ADD TO CART"}
-              </Button>
+                <Button
+                  className="flex-1 hover:bg-[#d97a1f] text-white py-3 text-lg"
+                  onClick={handleAddToCart}
+                >
+                  {addedToCart ? "✓ Added to Cart!" : "Add to Cart"}
+                </Button>
+              </div>
+              {/* Success Message */}
+              {addedToCart && (
+                <div className="bg-green-50 border border-green-200 rounded-md p-3">
+                  <p className="text-green-800 text-sm">
+                    ✓ {quantity} item{quantity > 1 ? "s" : ""} added to cart!
+                    <Link href="/cart" className="font-semibold underline ml-1">
+                      View Cart
+                    </Link>
+                  </p>
+                </div>
+              )}
             </div>
-
-            {/* Optional Success Message (below, if needed) */}
-            {addedToCart && (
-              <div className="mt-3 bg-green-50 border border-green-200 rounded-md p-3">
-                <p className="text-green-800 text-sm font-medium">
-                  {quantity} item{quantity > 1 ? "s" : ""} added to cart!{" "}
-                  <Link href="/cart" className="underline font-semibold">
-                    View Cart
-                  </Link>
-                </p>
-              </div>
-            )}
           </div>
         </div>
 
         {/* Product Tabs */}
-        <div className=" pt-8 mb-16">
+        <div className="pt-8 mb-16">
           <div className="flex space-x-8 border-b border-gray-200">
             <button
               onClick={() => setActiveTab("description")}
               className={`pb-4 border-b-2 transition-colors ${
                 activeTab === "description"
-                  ? "border-[#EC8923] text-[#EC8923] font-medium"
-                  : "border-transparent text-gray-600 hover:text-[#EC8923]"
+                  ? "border-black text-black font-medium"
+                  : "border-transparent text-gray-600 hover:text-black"
               }`}
             >
               Description
@@ -629,8 +537,8 @@ export default function SingleProductPage() {
               onClick={() => setActiveTab("information")}
               className={`pb-4 border-b-2 transition-colors ${
                 activeTab === "information"
-                  ? "border-[#EC8923] text-[#EC8923] font-medium"
-                  : "border-transparent text-gray-600 hover:text-[#EC8923]"
+                  ? "border-black text-black font-medium"
+                  : "border-transparent text-gray-600 hover:text-black"
               }`}
             >
               Additional Information
@@ -639,8 +547,8 @@ export default function SingleProductPage() {
               onClick={() => setActiveTab("reviews")}
               className={`pb-4 border-b-2 transition-colors ${
                 activeTab === "reviews"
-                  ? "border-[#EC8923] text-[#EC8923] font-medium"
-                  : "border-transparent text-gray-600 hover:text-[#EC8923]"
+                  ? "border-black text-black font-medium"
+                  : "border-transparent text-gray-600 hover:text-black"
               }`}
             >
               Reviews ({product.reviews})
@@ -756,7 +664,7 @@ export default function SingleProductPage() {
 
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
-          <div className="border-t border-gray-200 pt-12">
+          <div className="border-t pt-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">
               Related Products
             </h2>

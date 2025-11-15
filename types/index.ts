@@ -4,12 +4,17 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  images?: string[];
+  features?: string[];
   category: string;
   slug: string;
   inStock: boolean;
   description: string;
   sizes?: string[];
   colors?: string[];
+  rating?: number;
+  reviews?: number;
+  sku?: string;
 }
 
 export interface CartItem {
