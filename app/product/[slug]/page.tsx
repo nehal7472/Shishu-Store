@@ -18,7 +18,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Winter Loungewear",
     description: "Comfortable and warm loungewear for cozy winter days",
     heroImage:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1622218286192-95f6a20083c7?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "w-lounge-1",
@@ -26,7 +26,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
         price: 34.99,
         originalPrice: 39.99,
         image:
-          "https://images.unsplash.com/photo-1551488831-6745a0aa60c6?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1758782213532-bbb5fd89885e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "loungewear",
         slug: "snowblossom-loungewear",
         inStock: true,
@@ -37,7 +37,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
         name: "Winter Comfort Set",
         price: 29.99,
         image:
-          "https://images.unsplash.com/photo-1594736797933-d0d69c3bc5db?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1762077656341-255342c49279?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "loungewear",
         slug: "winter-comfort-set",
         inStock: true,
@@ -49,7 +49,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Jackets & Coats",
     description: "Warm jackets and coats for cold winter days",
     heroImage:
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1706765779494-2705542ebe74?q=80&w=1051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "w-jacket-1",
@@ -57,7 +57,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
         price: 49.99,
         originalPrice: 59.99,
         image:
-          "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1543076447-215ad9ba6923?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "jackets-coats",
         slug: "winter-parka-jacket",
         inStock: true,
@@ -68,7 +68,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
         name: "Kids Winter Coat",
         price: 42.99,
         image:
-          "https://images.unsplash.com/photo-1551488831-00ddcb9294c6?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1557418669-db3f781a58c0?q=80&w=697&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "jackets-coats",
         slug: "kids-winter-coat",
         inStock: true,
@@ -80,7 +80,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Hoodies",
     description: "Cozy hoodies for winter comfort",
     heroImage:
-      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1512400930990-e0bc0bd809df?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "w-hoodie-1",
@@ -88,7 +88,7 @@ const PRODUCT_DATA: { [key: string]: any } = {
         price: 29.99,
         originalPrice: 34.99,
         image:
-          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1635796244808-d93b6e26de62?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "hoodie",
         slug: "kids-winter-hoodie",
         inStock: true,
@@ -100,14 +100,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Gift Box Collection",
     description: "Beautifully curated gift boxes for special occasions",
     heroImage:
-      "https://images.unsplash.com/photo-1544816155-12df9643f4e4?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1140&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "t-gift-1",
         name: "Premium Baby Gift Box",
         price: 79.99,
         image:
-          "https://images.unsplash.com/photo-1544816155-12df9643f4e4?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1592903297149-37fb25202dfa?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "gift-box",
         slug: "premium-baby-gift-box",
         inStock: true,
@@ -119,14 +119,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Toys Collection",
     description: "Educational and fun toys for children",
     heroImage:
-      "https://images.unsplash.com/photo-1594787319143-60a132a8e0f0?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "tb-toy-1",
         name: "Play Craft Crossword Premiere Game (Ages 5+)",
         price: 24.99,
         image:
-          "https://images.unsplash.com/photo-1594787319143-60a132a8e0f0?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1596068587619-e4b11c7a3488?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "toys",
         slug: "play-craft-crossword-premiere-game-ages-5",
         inStock: true,
@@ -138,14 +138,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Lehenga Collection",
     description: "Traditional lehenga for special occasions",
     heroImage:
-      "https://images.unsplash.com/photo-1590005354167-6da97870f6c4?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1724856604403-60304b28906c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "e-lehenga-1",
         name: "Traditional Silk Lehenga",
         price: 89.99,
         image:
-          "https://images.unsplash.com/photo-1590005354167-6da97870f6c4?w=400&h=400&fit=crop",
+          "https://plus.unsplash.com/premium_photo-1682091998866-49086baf65b3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "lehenga",
         slug: "traditional-silk-lehenga",
         inStock: true,
@@ -157,14 +157,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Salwar Kameez",
     description: "Traditional salwar kameez sets",
     heroImage:
-      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1597983073750-16f5ded1321f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "e-salwar-1",
         name: "Embroidered Salwar Kameez",
         price: 65.99,
         image:
-          "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1583391733981-8b530b760347?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "salwar-kameez",
         slug: "embroidered-salwar-kameez",
         inStock: true,
@@ -176,14 +176,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Co-ord Sets",
     description: "Matching co-ord sets for casual wear",
     heroImage:
-      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1762777777740-6fc60e59a4bb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "c-coord-1",
         name: "Casual Co-ord Set",
         price: 35.99,
         image:
-          "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1762777777740-6fc60e59a4bb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "co-ord-set",
         slug: "casual-co-ord-set",
         inStock: true,
@@ -195,14 +195,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Casual Pants",
     description: "Comfortable casual pants for kids",
     heroImage:
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1640336437301-8368b53861ab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "c-pants-1",
         name: "Kids Casual Pants",
         price: 22.99,
         image:
-          "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1640336437301-8368b53861ab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "pants",
         slug: "kids-casual-pants",
         inStock: true,
@@ -214,14 +214,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Polo Shirts",
     description: "Casual polo shirts for boys",
     heroImage:
-      "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1625910513413-c23b8bb81cba?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "b-polo-1",
         name: "Boys Cotton Polo",
         price: 19.99,
         image:
-          "https://images.unsplash.com/photo-1585487000124-7a67679f47e4?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1625910513413-c23b8bb81cba?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "polo",
         slug: "boys-cotton-polo",
         inStock: true,
@@ -233,14 +233,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Frocks Collection",
     description: "Beautiful frocks for little girls",
     heroImage:
-      "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1721190167637-fb49b48c2417?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "g-frock-1",
         name: "Girls Summer Frock",
         price: 32.99,
         image:
-          "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1721190167637-fb49b48c2417?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "frock",
         slug: "girls-summer-frock",
         inStock: true,
@@ -252,14 +252,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Leggings",
     description: "Comfortable leggings for girls",
     heroImage:
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1541694458248-5aa2101c77df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "g-leggings-1",
         name: "Girls Cotton Leggings",
         price: 15.99,
         image:
-          "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1541694458248-5aa2101c77df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "leggings",
         slug: "girls-cotton-leggings",
         inStock: true,
@@ -271,14 +271,14 @@ const PRODUCT_DATA: { [key: string]: any } = {
     title: "Products",
     description: "Browse our collection of products",
     heroImage:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     products: [
       {
         id: "default-1",
         name: "Sample Product",
         price: 19.99,
         image:
-          "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "general",
         slug: "sample-product",
         inStock: true,

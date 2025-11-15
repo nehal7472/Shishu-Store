@@ -5,12 +5,46 @@ import { CartItem, CartState } from "@/types";
 const getItemKey = (item: CartItem) =>
   `${item.id}-${item.size || "no-size"}-${item.color || "no-color"}`;
 
-const initialState: CartState = {
-  items: [],
-  totalQuantity: 0,
-  totalAmount: 0,
-  isOpen: false,
+// Load cart from sessionStorage
+const loadCartFromStorage = (): CartState => {
+  if (typeof window === "undefined") {
+    return {
+      items: [],
+      totalQuantity: 0,
+      totalAmount: 0,
+      isOpen: false,
+    };
+  }
+
+  try {
+    const storedCart = sessionStorage.getItem("shishu-cart");
+    if (storedCart) {
+      return JSON.parse(storedCart);
+    }
+  } catch (error) {
+    console.error("Error loading cart from sessionStorage:", error);
+  }
+
+  return {
+    items: [],
+    totalQuantity: 0,
+    totalAmount: 0,
+    isOpen: false,
+  };
 };
+
+// Save cart to sessionStorage
+const saveCartToStorage = (cart: CartState) => {
+  if (typeof window === "undefined") return;
+
+  try {
+    sessionStorage.setItem("shishu-cart", JSON.stringify(cart));
+  } catch (error) {
+    console.error("Error saving cart to sessionStorage:", error);
+  }
+};
+
+const initialState: CartState = loadCartFromStorage();
 
 const cartSlice = createSlice({
   name: "cart",
@@ -37,6 +71,9 @@ const cartSlice = createSlice({
       // Update totals
       state.totalQuantity += 1;
       state.totalAmount += newItem.price;
+
+      // Save to sessionStorage
+      saveCartToStorage(state);
     },
 
     // Remove item from cart
@@ -56,6 +93,9 @@ const cartSlice = createSlice({
         state.totalQuantity -= existingItem.quantity;
         state.totalAmount -= existingItem.price * existingItem.quantity;
         state.items.splice(existingItemIndex, 1);
+
+        // Save to sessionStorage
+        saveCartToStorage(state);
       }
     },
 
@@ -75,6 +115,9 @@ const cartSlice = createSlice({
         existingItem.quantity += 1;
         state.totalQuantity += 1;
         state.totalAmount += existingItem.price;
+
+        // Save to sessionStorage
+        saveCartToStorage(state);
       }
     },
 
@@ -103,6 +146,9 @@ const cartSlice = createSlice({
           state.totalQuantity -= 1;
           state.totalAmount -= existingItem.price;
         }
+
+        // Save to sessionStorage
+        saveCartToStorage(state);
       }
     },
 
@@ -111,6 +157,9 @@ const cartSlice = createSlice({
       state.items = [];
       state.totalQuantity = 0;
       state.totalAmount = 0;
+
+      // Save to sessionStorage
+      saveCartToStorage(state);
     },
 
     // Toggle cart drawer
@@ -127,6 +176,14 @@ const cartSlice = createSlice({
     closeCart: (state) => {
       state.isOpen = false;
     },
+
+    // Sync cart from storage (useful for cross-tab synchronization)
+    syncCartFromStorage: (state) => {
+      const storedCart = loadCartFromStorage();
+      state.items = storedCart.items;
+      state.totalQuantity = storedCart.totalQuantity;
+      state.totalAmount = storedCart.totalAmount;
+    },
   },
 });
 
@@ -139,6 +196,7 @@ export const {
   toggleCart,
   openCart,
   closeCart,
+  syncCartFromStorage,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

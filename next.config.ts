@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["picsum.photos", "images.unsplash.com"], // add all external image hosts you use
+    domains: ["picsum.photos", "images.unsplash.com", "plus.unsplash.com"], // add all external image hosts you use
   },
 };
 

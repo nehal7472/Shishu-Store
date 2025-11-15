@@ -1,3 +1,4 @@
+export * from "./auth";
 export interface Product {
   id: string;
   name: string;
@@ -35,3 +36,5 @@ export interface CartState {
   totalAmount: number;
   isOpen: boolean;
 }
+
+

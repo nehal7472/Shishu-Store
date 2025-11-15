@@ -34,8 +34,8 @@ export function ProductCard({ product }: { product: Product }) {
         {/* Image */}
         <div className="aspect-square overflow-hidden">
           <Image
-            src={product.image}
-            alt={product.name}
+            src={product.image || "/placeholder.png"} // fallback image
+            alt={product.name || "Product Image"}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             width={500}
             height={500}
@@ -44,19 +44,19 @@ export function ProductCard({ product }: { product: Product }) {
       </Link>
 
       {/* Content */}
-      <div className="p-4 text-center select-none">
-        <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">
+      <div className="pb-2 text-center select-none">
+        <p className="text-[10px] text-gray-500 uppercase tracking-wide">
           {product.category}
         </p>
 
         <Link href={productUrl}>
-          <h3 className="text-base font-semibold mb-2 hover:text-[#EC8923] transition-colors">
+          <h3 className="text-base font-semibold  hover:text-[#EC8923] transition-colors">
             {product.name}
           </h3>
         </Link>
 
         {/* Rating Stars */}
-        <div className="flex justify-center mb-2">
+        <div className="flex justify-center ">
           <div className="flex space-x-1 text-gray-300">
             {Array.from({ length: 5 }).map((_, i) => (
               <span key={i}>★</span>
