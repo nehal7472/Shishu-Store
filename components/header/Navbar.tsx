@@ -184,11 +184,13 @@ export default function Navbar() {
 
             {isAuthenticated ? (
               <>
-                <div className="flex items-center border px-4 py-2 rounded-full text-sm">
-                  <User className="h-4 w-4 mr-2" />
-                  <span className="text-[13px] font-semibold">
-                    {user?.firstName}
-                  </span>
+                <div className=" border px-4 py-2 rounded-full text-sm">
+                  <Link href={"/dashboard"} className="flex">
+                    <User className="h-4 w-4 mr-2" />
+                    <span className="text-[13px] font-semibold">
+                      {user?.firstName}
+                    </span>
+                  </Link>
                 </div>
                 <Button
                   variant="outline"
